@@ -1,21 +1,21 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Auth } from './components/Auth';
-import { Todo } from './components/Todo';
-import axios from 'axios';
-import { CsrfToken } from './types';
+import { useEffect } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Auth } from './components/Auth'
+import { Todo } from './components/Todo'
+import axios from 'axios'
+import { CsrfToken } from './types'
 
 function App() {
   useEffect(() => {
-    axios.defaults.withCredentials = true;
+    axios.defaults.withCredentials = true
     const getCsrfToken = async () => {
       const res = await axios.get<CsrfToken>(
         `${process.env.REACT_APP_API_URL}/csrf`
-      );
-      axios.defaults.headers.common['X-CSRF-Token'] = res.data.csrf_token;
-    };
-    getCsrfToken();
-  }, []);
+      )
+      axios.defaults.headers.common['X-CSRF-Token'] = res.data.csrf_token
+    }
+    getCsrfToken()
+  }, [])
   return (
     <BrowserRouter>
       <Routes>
@@ -23,7 +23,7 @@ function App() {
         <Route path="/todo" element={<Todo />} />
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

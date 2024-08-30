@@ -1,15 +1,15 @@
-import { create } from 'zustand';
+import { create } from 'zustand'
 
 type EditedTask = {
-  id: number;
-  title: string;
-};
+  id: number
+  title: string
+}
 
 type State = {
-  editedTask: EditedTask;
-  updateEditedTask: (payload: EditedTask) => void;
-  resetEditedTask: () => void;
-};
+  editedTask: EditedTask
+  updateEditedTask: (payload: EditedTask) => void
+  resetEditedTask: () => void
+}
 
 const useStore = create<State>((set) => ({
   editedTask: { id: 0, title: '' },
@@ -21,6 +21,6 @@ const useStore = create<State>((set) => ({
     set({
       editedTask: { id: 0, title: '' },
     }),
-}));
+}))
 
-export default useStore;
+export default useStore

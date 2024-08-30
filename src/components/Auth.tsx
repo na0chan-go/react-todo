@@ -1,20 +1,20 @@
-import { useState, FormEvent } from 'react';
-import { CheckBadgeIcon, ArrowPathIcon } from '@heroicons/react/24/solid';
-import { useMutateAuth } from '../hooks/useMutateAuth';
+import { useState, FormEvent } from 'react'
+import { CheckBadgeIcon, ArrowPathIcon } from '@heroicons/react/24/solid'
+import { useMutateAuth } from '../hooks/useMutateAuth'
 
 export const Auth = () => {
-  const [email, setEmail] = useState('');
-  const [pw, setPw] = useState('');
-  const [isLogin, setIsLogin] = useState(true);
-  const { loginMutation, registerMutation } = useMutateAuth();
+  const [email, setEmail] = useState('')
+  const [pw, setPw] = useState('')
+  const [isLogin, setIsLogin] = useState(true)
+  const { loginMutation, registerMutation } = useMutateAuth()
 
   const submitAuthHandler = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
     if (isLogin) {
       loginMutation.mutate({
         email: email,
         password: pw,
-      });
+      })
     } else {
       await registerMutation
         .mutateAsync({
@@ -25,10 +25,10 @@ export const Auth = () => {
           loginMutation.mutate({
             email: email,
             password: pw,
-          });
-        });
+          })
+        })
     }
-  };
+  }
   return (
     <div className="flex justify-center items-center flex-col min-h-screen text-gray-600 font-mono">
       <div className="flex items-center">
@@ -75,5 +75,5 @@ export const Auth = () => {
         className="w-6 h-6 my-2 text-blue-500 cursor-pointer"
       />
     </div>
-  );
-};
+  )
+}
